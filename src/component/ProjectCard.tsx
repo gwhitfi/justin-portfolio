@@ -6,7 +6,7 @@ type ProjectCardProps = {
     description: string
     projectLink: string
     githubLink: string
-    tech: []
+    tech: string[]
 }
 
 function ProjectCard({title, image, description, projectLink, githubLink, tech }: ProjectCardProps) {
