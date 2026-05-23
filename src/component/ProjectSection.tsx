@@ -1,29 +1,36 @@
 import ProjectCard from "./ProjectCard";
-import chessProjectImage from "../assets/Chess1.png"
-import cardTableProject from "../assets/cardtable.png"
-import { technologies } from "../data/technologies"
+import chessProjectImage from "../assets/Chess1.png";
+import cardTableProject from "../assets/cardtable.png";
+import weather from "../assets/weather.png";
+import { technologies } from "../data/technologies";
 
 const projects = [
     {
-    title: "Chess ",
-    description: "Simple chess game that allows the user to play against a computer opponent ",
-    image: chessProjectImage,
-    projectLink: "https://jwchess.netlify.app/",
-    githubLink: "https://github.com/gwhitfi/chess",
-    tech: [
-            technologies.javascript, technologies.html, technologies.css
-          ]
-  },
-  {
-    title: "Console Card Game",
-    description: "Console based card game, offering different card game options.",
-    image: cardTableProject,
-    projectLink: "https://github.com/gwhitfi/CardGame",
-    githubLink: "https://github.com/gwhitfi/CardGame",
-    tech: [technologies.csharp, technologies.dotnet]
-  }
-]
-
+        title: "Weather By ZipCode",
+        description:
+            "React web application utilizing Google Geocode and NWS API's to get weather forecasts by ZipCode.",
+        image: weather,
+        projectLink: "https://weatherbyzipcode.netlify.app/",
+        githubLink: "https://github.com/gwhitfi/weatherapp",
+        tech: [technologies.react, technologies.typescript],
+    },
+    {
+        title: "Chess ",
+        description: "Simple chess game that allows the user to play against a computer opponent ",
+        image: chessProjectImage,
+        projectLink: "https://jwchess.netlify.app/",
+        githubLink: "https://github.com/gwhitfi/chess",
+        tech: [technologies.javascript, technologies.html, technologies.css],
+    },
+    {
+        title: "Console Card Game",
+        description: "Console based card game, offering different card game options.",
+        image: cardTableProject,
+        projectLink: "https://github.com/gwhitfi/CardGame",
+        githubLink: "https://github.com/gwhitfi/CardGame",
+        tech: [technologies.csharp, technologies.dotnet],
+    },
+];
 
 function ProjectSection() {
     return (
@@ -35,12 +42,20 @@ function ProjectSection() {
 
                 <div className="row justify-content-center">
                     {projects.map((projects) => (
-                        <ProjectCard key={projects.title} title={projects.title} image={projects.image} description={projects.description} projectLink={projects.projectLink} githubLink={projects.githubLink} tech={projects.tech} />
+                        <ProjectCard
+                            key={projects.title}
+                            title={projects.title}
+                            image={projects.image}
+                            description={projects.description}
+                            projectLink={projects.projectLink}
+                            githubLink={projects.githubLink}
+                            tech={projects.tech}
+                        />
                     ))}
                 </div>
             </div>
         </section>
-    )
+    );
 }
 
-export default ProjectSection
+export default ProjectSection;
