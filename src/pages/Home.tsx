@@ -1,6 +1,5 @@
-import Header from "../component/Header";
-import ProjectSection from "../component/ProjectSection";
-
+import Header from "../components/Header";
+import ProjectSection from "../components/ProjectSection";
 
 function Home() {
     return (
@@ -8,7 +7,7 @@ function Home() {
             <Header />
             <ProjectSection />
         </>
-    )
+    );
 }
 
 export default Home;
