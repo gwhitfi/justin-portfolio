@@ -1,11 +1,11 @@
-import justin from "../assets/justin.jpeg";
+import justin from "../../assets/justin.jpeg";
 
-export default function WelcomeCard() {
+export default function WelcomeSection() {
     return (
-        <div className="flex flex-col max-w-xl items-center rounded-2xl text-white bg-neutral-800 justify-center p-5 gap-2">
-            <img src={justin} className="w-36 rounded-full" alt="" />
-            <h2 className="text-2xl mb-3">Hey, I'm Justin!</h2>
-            <div className="flex flex-col text-center text-lg gap-2 text">
+        <div className="bg-neutral-950 rounded-2xl p-5 flex flex-col items-center gap-5 md:p-15">
+            <img src={justin} className="w-32 rounded-full" alt="" />
+            <h2 className="text-2xl md:text-3xl">Hey, I'm Justin!</h2>
+            <div className="flex flex-col gap-5 md:text-2xl">
                 <p>
                     I'm a <span className="">software developer</span> who also has a diverse
                     professional background in real estate and online retail. I love to create and

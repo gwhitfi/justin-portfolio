@@ -16,7 +16,7 @@ export const projects: Project[] = [
     {
         title: "Setlist -> Playlist",
         description:
-            "Search for your favorite musical artist and get a custom spotify playlist created based on their recently played live setlists",
+            "Search for your favorite musical artist and get a custom Spotify playlist created based on their recently played live setlists. Data provided by the Setlist.fm, MusicBrainz, Last.fm APIs, and artwork provided by the Fanart.tv API.",
         screenshot: SetlistPlaylist,
         githubLink: "https://github.com/gwhitfi/setlist-playlist",
         hostedLink: "",
@@ -31,7 +31,7 @@ export const projects: Project[] = [
     {
         title: "Simple Weather",
         description:
-            "A simple weather app that focuses on providing key information without filler",
+            "A simple weather app that focuses on providing key information without filler. Implements the Open-Meteo and Google Geocoding APIs.",
         screenshot: WeatherSimple,
         githubLink: "https://github.com/gwhitfi/simple-weather",
         hostedLink: "https://weather-simplified.netlify.app/",

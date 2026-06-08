@@ -1,22 +1,22 @@
 import { useState } from "react";
-import type { Project } from "../data/projects";
-import TechIcon from "./TechIcon";
-import ApiIcon from "./ApiIcon";
+import type { Project } from "../../data/projects";
+import TechIcon from "../TechIcon";
+import ApiIcon from "../ApiIcon";
 
 export default function ProjectCard({ project }: { project: Project }) {
     const { title, description, screenshot, githubLink, hostedLink, techIcons, apisUsed } = project;
     const [imgOpen, setImgOpen] = useState(false);
     return (
-        <div className="flex flex-col items-center max-w-md gap-4 text-white bg-neutral-800 rounded-2xl py-5">
-            <h2 className="text-4xl">{title}</h2>
+        <div className="bg-neutral-900 rounded-2xl p-5 flex flex-col items-center gap-5">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl">{title}</h2>
             <img
                 src={screenshot}
                 alt={`${title} screenshot`}
                 onClick={() => setImgOpen((prev) => !prev)}
-                className={`border border-neutral-200 p-2 rounded-2xl ${imgOpen ? "w-2xl" : "w-64"} `}
+                className={`${imgOpen ? "w-2xl" : "w-64"} `}
             />
-            <p className="text-center w-2/3">{description}</p>
-            <div className="flex gap-2">
+            <p className="text-center md:text-xl lg:text-2xl">{description}</p>
+            <div className="flex gap-5">
                 {techIcons?.map((icon) => {
                     return (
                         <div key={icon} className="relative">
@@ -25,7 +25,7 @@ export default function ProjectCard({ project }: { project: Project }) {
                     );
                 })}
             </div>
-            <div className="flex flex-wrap gap-3 max-w-64 justify-center">
+            <div className="flex flex-wrap justify-center gap-5 md:text-xl">
                 {apisUsed?.map((api) => {
                     return (
                         <div key={api} className="relative">
@@ -34,15 +34,15 @@ export default function ProjectCard({ project }: { project: Project }) {
                     );
                 })}
             </div>
-            <div className="flex">
+            <div className="flex gap-2">
                 <a href={githubLink}>
-                    <button className="p-2 rounded-4xl bg-neutral-900 hover:bg-neutral-950 hover:cursor-pointer">
+                    <button className="bg-neutral-950 py-2 px-2 w-32 rounded-2xl hover:cursor-pointer hover:bg-neutral-800 md:text-xl md:w-48">
                         View GitHub
                     </button>
                 </a>
                 {hostedLink && (
                     <a href={hostedLink}>
-                        <button className="p-2 rounded-4xl bg-neutral-900 hover:bg-neutral-950 hover:cursor-pointer">
+                        <button className="bg-neutral-950 py-2 px-2 w-32 rounded-2xl hover:cursor-pointer hover:bg-neutral-800 md:text-xl md:w-48">
                             View Project
                         </button>
                     </a>
