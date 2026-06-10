@@ -11,6 +11,16 @@ export default function ContactSection() {
                 </a>{" "}
                 is the best way to contact me, feel free to reach out!
             </p>
+            <p>
+                View my{" "}
+                <a
+                    href="https://drive.google.com/file/d/1ylfwHzjxOfg5b6AIPKactL3NEZG3fQP8/view?usp=sharing"
+                    target="_blank"
+                    className="underline"
+                >
+                    Resume
+                </a>{" "}
+            </p>
         </div>
     );
 }

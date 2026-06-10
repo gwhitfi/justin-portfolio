@@ -8,7 +8,7 @@ export default function Header() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl">Justin Whitfield</h1>
             <Menu onClick={() => setMenuOpen((prev) => !prev)} />
             {menuOpen && (
-                <div className="flex gap-2 text-center">
+                <div className="flex flex-wrap justify-center gap-2 text-center">
                     <a
                         href="#projects"
                         className="bg-neutral-900 py-2 px-4 w-24 md:w-36 rounded-2xl"
@@ -23,6 +23,13 @@ export default function Header() {
                         className="bg-neutral-900 py-2 px-4 w-24 md:w-36 rounded-2xl"
                     >
                         Contact
+                    </a>
+                    <a
+                        href="https://drive.google.com/file/d/1ylfwHzjxOfg5b6AIPKactL3NEZG3fQP8/view?usp=sharing"
+                        className="bg-neutral-900 py-2 px-4 w-24 md:w-36 rounded-2xl"
+                        target="_blank"
+                    >
+                        Resume
                     </a>
                 </div>
             )}
