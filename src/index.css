@@ -3,5 +3,11 @@
 
 body {
     font-family: "Space Grotesk";
-    @apply bg-neutral-900;
+    @apply bg-zinc-950 bg-[radial-gradient(ellipse_at_top,var(--color-indigo-950),var(--color-zinc-950)_60%)] bg-fixed;
+}
+
+@layer base {
+    h1, h2 {
+        @apply font-['Space_Grotesk'] font-bold tracking-tight text-white;
+    }
 }
