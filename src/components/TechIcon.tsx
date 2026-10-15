@@ -12,7 +12,7 @@ export default function TechIcon({ icon }: TechIconProps) {
             onMouseEnter={() => setTooltipOpen(true)}
             onMouseLeave={() => setTooltipOpen(false)}
         >
-            <i className={`${icon} text-xl relative`}></i>
+            <i className={`${icon} text-base relative`}></i>
             {tooltipOpen && <Tooltip text={icon.split("-")[1]} />}
         </div>
     );

@@ -12,7 +12,7 @@ export default function ApiIcon({ api }: ApiIconProps) {
             onMouseEnter={() => setApiOpen(true)}
             onMouseLeave={() => setApiOpen(false)}
         >
-            <div className="hover:cursor-default px-2.5 py-0.5 rounded-full bg-accent/10 text-accent border border-accent/20">{api}</div>
+            <div className="hover:cursor-default px-2 py-0.5 rounded-full bg-accent/10 text-accent border border-accent/20">{api}</div>
             {apiOpen && <Tooltip text={`${api} API`} />}
         </div>
     );
