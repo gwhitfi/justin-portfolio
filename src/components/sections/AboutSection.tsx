@@ -1,35 +1,22 @@
 export default function AboutSection() {
     return (
-        <div
-            id="about"
-            className="bg-zinc-900/60 border border-white/10 shadow-xl backdrop-blur rounded-3xl p-5 flex flex-col items-center gap-5 md:p-15"
-        >
-            <h2 className="text-4xl md:text-5xl lg:text-6xl">About</h2>
-            <div className="flex flex-col gap-4 text-zinc-400 md:text-lg leading-relaxed">
+        <div id="about" className="flex scroll-mt-28 flex-col items-center gap-6 border-t border-white/10 pt-12">
+            <h2 className="text-lg md:text-xl">About</h2>
+            <div className="flex max-w-3xl flex-col gap-3 text-sm text-zinc-400 leading-relaxed">
                 <p>
-                    I have been interested in and tinkering with computers since I was very young. I
-                    built my first computer when I was 10 years old, with a little help form a
-                    family friend. I loved building websites and taught myself enough Python to
-                    create a simple game. Even though I originally didn't go down the Computer
-                    Science path in college, I always maintained my love of computers and
-                    technology.
+                    I'm a software developer with a Bachelor of Science in Computer Science, completed in March 2026. I enjoy
+                    coming up with unique ideas and turning a vision into reality with an application or software that can
+                    have practical real world use.
                 </p>
                 <p>
-                    Around 2019 I started spending more of my free time learning more about
-                    CS/Programming. The more time I spent learning the more it reaffirmed my love
-                    for it, and I made the decision to get my Bacehlor of Science in Computer
-                    Science degree, which I completed in March 2026.
+                    I also have nearly 15 years of professional business experience. After earning a BA in History from
+                    Clemson University in 2012, I worked in real estate. This includes property management, sales, flipping,
+                    development, and investing. I've also managed the warehouse and shipment for an online retail business
+                    moving hundreds of products every day.
                 </p>
                 <p>
-                    I graduated from Clemson University in 2012 with a BA in History, and
-                    immediately started working in Real Estate. During the past nearly 15 years I
-                    have been involved in nearly every discipline of Real Estate including
-                    construction, property management, sales, flipping, and investing.
-                </p>
-                <p>
-                    I also have had many years of experience in online retail with shipping and
-                    warehouse management for a small business shipping hundreds of products every
-                    day.
+                    This background has given me experience in solving unique problems and communicating with many different
+                    people and across different industries.
                 </p>
             </div>
         </div>

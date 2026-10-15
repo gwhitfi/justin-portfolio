@@ -7,7 +7,7 @@ import ContactSection from "./components/sections/ContactSection";
 
 function App() {
     return (
-        <div className="flex flex-col items-center gap-8 p-5 min-h-screen font-sans text-zinc-300 antialiased md:max-w-2xl md:mx-auto lg:max-w-3xl xl:max-w-5xl">
+        <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-5 pb-16 font-sans text-zinc-300 antialiased md:px-8">
             <Header />
             <WelcomeSection />
             <ProjectSection />

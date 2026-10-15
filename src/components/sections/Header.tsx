@@ -4,35 +4,40 @@ import { useState } from "react";
 export default function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
     return (
-        <nav className="bg-zinc-900/60 border border-white/10 shadow-xl backdrop-blur rounded-3xl p-5 w-full flex flex-col items-center gap-5 md:p-15">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl bg-linear-to-r from-white via-indigo-200 to-violet-400 bg-clip-text text-transparent">Justin Whitfield</h1>
-            <Menu onClick={() => setMenuOpen((prev) => !prev)} />
-            {menuOpen && (
-                <div className="flex flex-wrap justify-center gap-2 text-center">
-                    <a
-                        href="#projects"
-                        className="bg-white/5 hover:bg-white/15 transition py-2 px-4 w-24 md:w-36 rounded-full"
-                    >
-                        Projects
-                    </a>
-                    <a href="#about" className="bg-white/5 hover:bg-white/15 transition py-2 px-4 w-24 md:w-36 rounded-full">
-                        About
-                    </a>
-                    <a
-                        href="#contact"
-                        className="bg-white/5 hover:bg-white/15 transition py-2 px-4 w-24 md:w-36 rounded-full"
-                    >
-                        Contact
-                    </a>
-                    <a
-                        href="https://drive.google.com/file/d/1ylfwHzjxOfg5b6AIPKactL3NEZG3fQP8/view?usp=sharing"
-                        className="bg-white/5 hover:bg-white/15 transition py-2 px-4 w-24 md:w-36 rounded-full"
-                        target="_blank"
-                    >
-                        Resume
-                    </a>
-                </div>
-            )}
+        <nav className="sticky top-4 z-20 mt-4 flex flex-wrap items-center justify-between gap-2 rounded-2xl border border-white/10 bg-zinc-900/70 px-5 py-3 shadow-xl backdrop-blur-xl">
+            <h1 className="text-xl md:text-2xl bg-linear-to-r from-white to-accent bg-clip-text text-transparent">
+                Justin Whitfield
+            </h1>
+            <Menu className="cursor-pointer md:hidden" onClick={() => setMenuOpen((prev) => !prev)} />
+            <div
+                className={`${menuOpen ? "flex" : "hidden"} w-full flex-col gap-1 text-sm md:flex md:w-auto md:flex-row`}
+            >
+                <a
+                    href="#projects"
+                    className="rounded-full px-4 py-2 text-zinc-300 transition hover:bg-white/10 hover:text-white"
+                >
+                    Projects
+                </a>
+                <a
+                    href="#about"
+                    className="rounded-full px-4 py-2 text-zinc-300 transition hover:bg-white/10 hover:text-white"
+                >
+                    About
+                </a>
+                <a
+                    href="#contact"
+                    className="rounded-full px-4 py-2 text-zinc-300 transition hover:bg-white/10 hover:text-white"
+                >
+                    Contact
+                </a>
+                <a
+                    href="https://drive.google.com/file/d/1ylfwHzjxOfg5b6AIPKactL3NEZG3fQP8/view?usp=sharing"
+                    className="rounded-full bg-accent/10 px-4 py-2 text-accent transition hover:bg-accent/20"
+                    target="_blank"
+                >
+                    Resume
+                </a>
+            </div>
         </nav>
     );
 }

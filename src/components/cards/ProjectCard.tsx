@@ -7,47 +7,61 @@ export default function ProjectCard({ project }: { project: Project }) {
     const { title, description, screenshot, githubLink, hostedLink, techIcons, apisUsed } = project;
     const [imgOpen, setImgOpen] = useState(false);
     return (
-        <div className="bg-zinc-950/60 border border-white/5 hover:border-indigo-400/40 hover:-translate-y-1 hover:shadow-xl hover:shadow-indigo-500/10 transition duration-300 rounded-2xl p-6 flex flex-col items-center gap-5">
-            <h2 className="text-2xl md:text-3xl">{title}</h2>
+        <div className="flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-zinc-900/80 transition duration-300 hover:border-accent/40 hover:shadow-xl hover:shadow-accent/10">
             <img
                 src={screenshot}
                 alt={`${title} screenshot`}
                 onClick={() => setImgOpen((prev) => !prev)}
-                className={`${imgOpen ? "w-2xl" : "w-64"} rounded-xl border border-white/10 transition-all cursor-zoom-in`}
+                className="h-28 w-full cursor-zoom-in border-b border-white/10 object-cover object-top"
             />
-            <p className="text-center text-zinc-400 md:text-lg leading-relaxed">{description}</p>
-            <div className="flex gap-5">
-                {techIcons?.map((icon) => {
-                    return (
-                        <div key={icon} className="relative">
-                            <TechIcon icon={icon} />
-                        </div>
-                    );
-                })}
-            </div>
-            <div className="flex flex-wrap justify-center gap-2">
-                {apisUsed?.map((api) => {
-                    return (
-                        <div key={api} className="relative">
-                            <ApiIcon api={api} />
-                        </div>
-                    );
-                })}
-            </div>
-            <div className="flex gap-2">
-                <a href={githubLink}>
-                    <button className="border border-white/15 text-zinc-100 text-sm font-medium py-2 px-2 w-32 rounded-full hover:cursor-pointer hover:bg-white/10 transition md:text-base md:w-40">
-                        View GitHub
-                    </button>
-                </a>
-                {hostedLink && (
-                    <a href={hostedLink}>
-                        <button className="bg-linear-to-r from-indigo-500 to-violet-500 text-white text-sm font-medium py-2 px-2 w-32 rounded-full hover:cursor-pointer hover:brightness-110 shadow-lg shadow-indigo-500/25 transition md:text-base md:w-40">
-                            View Project
+            <div className="flex flex-1 flex-col gap-3 p-4">
+                <h2 className="text-lg">{title}</h2>
+                <p className="text-sm text-zinc-400 leading-relaxed">{description}</p>
+                <div className="flex gap-2 text-sm">
+                    {techIcons?.map((icon) => {
+                        return (
+                            <div key={icon} className="relative">
+                                <TechIcon icon={icon} />
+                            </div>
+                        );
+                    })}
+                </div>
+                <div className="flex flex-wrap gap-1.5 text-xs">
+                    {apisUsed?.map((api) => {
+                        return (
+                            <div key={api} className="relative">
+                                <ApiIcon api={api} />
+                            </div>
+                        );
+                    })}
+                </div>
+                <div className="mt-auto flex gap-2 pt-1">
+                    <a href={githubLink} className="flex-1">
+                        <button className="w-full border border-white/15 text-zinc-100 text-xs font-medium py-1.5 px-3 rounded-full hover:cursor-pointer hover:bg-white/10 transition">
+                            View GitHub
                         </button>
                     </a>
-                )}
+                    {hostedLink && (
+                        <a href={hostedLink} className="flex-1">
+                            <button className="w-full bg-accent text-zinc-950 text-xs font-medium py-1.5 px-3 rounded-full hover:cursor-pointer hover:brightness-110 shadow-lg shadow-accent/20 transition">
+                                View Project
+                            </button>
+                        </a>
+                    )}
+                </div>
             </div>
+            {imgOpen && (
+                <div
+                    onClick={() => setImgOpen(false)}
+                    className="fixed inset-0 z-50 flex cursor-zoom-out items-center justify-center bg-black/80 p-6 backdrop-blur-sm"
+                >
+                    <img
+                        src={screenshot}
+                        alt={`${title} screenshot`}
+                        className="max-h-full max-w-full rounded-xl shadow-2xl"
+                    />
+                </div>
+            )}
         </div>
     );
 }

@@ -1,13 +1,17 @@
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap");
 @import "tailwindcss";
 
+@theme {
+    --font-sans: "JetBrains Mono", ui-monospace, monospace;
+    --color-accent: #3fb950;
+}
+
 body {
-    font-family: "Space Grotesk";
-    @apply bg-zinc-950 bg-[radial-gradient(ellipse_at_top,var(--color-indigo-950),var(--color-zinc-950)_60%)] bg-fixed;
+    @apply bg-zinc-950 bg-[radial-gradient(ellipse_at_top,color-mix(in_oklab,var(--color-green-950)_40%,transparent),transparent_45%)] bg-fixed;
 }
 
 @layer base {
     h1, h2 {
-        @apply font-['Space_Grotesk'] font-bold tracking-tight text-white;
+        @apply font-bold tracking-tight text-white;
     }
 }
