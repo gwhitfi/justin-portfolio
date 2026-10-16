@@ -31,7 +31,7 @@ export default function Header() {
                     Contact
                 </a>
                 <a
-                    href="https://drive.google.com/file/d/1ylfwHzjxOfg5b6AIPKactL3NEZG3fQP8/view?usp=sharing"
+                    href="https://drive.google.com/file/d/1Rlf0Eudkl3cd7iG9cmK3y_sdAYkc48v2/view?usp=sharing"
                     className="rounded-full bg-accent/10 px-4 py-2 text-accent transition hover:bg-accent/20"
                     target="_blank"
                 >
