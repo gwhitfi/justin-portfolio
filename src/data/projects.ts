@@ -1,7 +1,11 @@
-import SetlistPlaylist from "../assets/SetlistPlaylist.png";
+import SetlistPlaylist from "../assets/SpotifyPlaylist/SpotifyPlaylistMobileFriendly2.png";
 import WeatherSimple from "../assets/WeatherSimple.png";
 import Chess from "../assets/Chess.png";
 import JobScraper from "../assets/JobScraper.png";
+import FileSorter from "../assets/FileSorter.png";
+import WorkOrder from "../assets/WorkOrder.png";
+import WinTrellis from "../assets/WinTrellis.png";
+import CFBSim from "../assets/CFBSim.png";
 
 export interface Project {
     title: string;
@@ -18,7 +22,7 @@ export const projects: Project[] = [
         title: "Work Order Generator",
         description:
             "Built a multi-tenant SaaS platform that lets property managers generate, assign, and track contractor work orders. Designed a normalized PostgreSQL schema where every query is scoped to the user’s organization, keeping each company’s data separate",
-        screenshot: "",
+        screenshot: WorkOrder,
         githubLink: "https://www.workorder.dev",
         hostedLink: "https://www.workorder.dev",
         techIcons: ["devicon-go-plain colored"],
@@ -37,7 +41,7 @@ export const projects: Project[] = [
         title: "WinTrellis",
         description:
             "A custom Windows tiling window manager, in the style of popular Linux managers. Automatically snaps windows into predetermined grids, and move windows and focus with hotkeys. Custom workspace views, and laucnher for favorite apps.",
-        screenshot: "",
+        screenshot: WinTrellis,
         githubLink: "https://github.com/gwhitfi/wintrellis",
         techIcons: ["devicon-rust-plain", "devicon-windows11-original"],
         apisUsed: ["Win32"],
@@ -46,7 +50,7 @@ export const projects: Project[] = [
         title: "CFB Manager",
         description:
             "College Football management simulator, inspired by the popular 'Football Manager' series by Sports Interactive. Custom C++ game engine, allows user to simulate games or play them out manually making playcalling and coaching decisions. View the game real time in browser.",
-        screenshot: "",
+        screenshot: CFBSim,
         githubLink: "https://github.com/gwhitfi/cfb-sim",
         techIcons: ["devicon-cplusplus-plain colored", "devicon-typescript-plain colored", "devicon-css3-plain colored"],
         apisUsed: [],
@@ -54,7 +58,7 @@ export const projects: Project[] = [
     {
         title: "File Sorter",
         description: "Clean folders by easily sorting into pre-determined destinations.",
-        screenshot: WeatherSimple,
+        screenshot: FileSorter,
         githubLink: "https://github.com/gwhitfi/file-sorter",
         techIcons: ["devicon-cplusplus-plain colored", "devicon-windows11-original"],
         apisUsed: ["Win32"],
