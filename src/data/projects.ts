@@ -25,8 +25,13 @@ export const projects: Project[] = [
         screenshot: WorkOrder,
         githubLink: "https://www.workorder.dev",
         hostedLink: "https://www.workorder.dev",
-        techIcons: ["devicon-go-plain colored"],
-        apisUsed: ["REST Countries"],
+        techIcons: [
+            "devicon-typescript-plain colored",
+            "devicon-react-original colored",
+            "devicon-vitejs-plain colored",
+            "devicon-tailwindcss-original colored",
+        ],
+        apisUsed: [],
     },
     {
         title: "Job Scraper",
