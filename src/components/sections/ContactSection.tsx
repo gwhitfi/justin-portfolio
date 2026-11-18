@@ -52,15 +52,6 @@ export default function ContactSection() {
                 <span role="status" className="sr-only">
                     {copied ? "Email address copied" : ""}
                 </span>
-                <p className="text-sm text-muted">
-                    Résumé available on request.{" "}
-                    <a
-                        href={`mailto:${EMAIL}?subject=${encodeURIComponent("Résumé request")}`}
-                        className="text-accent underline underline-offset-4 decoration-accent/40 transition hover:decoration-accent"
-                    >
-                        Ask by email
-                    </a>
-                </p>
             </div>
         </section>
     );

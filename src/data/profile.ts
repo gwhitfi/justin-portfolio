@@ -5,3 +5,4 @@ export const SITE_REPO_URL = "https://github.com/gwhitfi/justin-portfolio";
 export const DEMO_URL = "https://www.workorderfox.com/demo";
 export const LOCATION = "Anderson, SC";
 export const AVAILABILITY = "Available full-time, on-site in Greenville, SC";
+export const WORK_ORDER_FOX_URL = "https://www.workorderfox.com";

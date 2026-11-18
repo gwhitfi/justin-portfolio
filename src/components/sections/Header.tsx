@@ -1,6 +1,7 @@
 import { Menu, X } from "lucide-react";
 import { SiGithub } from "@icons-pack/react-simple-icons";
 import { useEffect, useRef, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { external, primaryButton } from "../projects/styles";
 import { GITHUB_URL, LINKEDIN_URL } from "../../data/profile";
 
@@ -9,6 +10,9 @@ const SECTIONS = [
     { id: "about", label: "About" },
     { id: "contact", label: "Contact" },
 ] as const;
+
+// Separate pages, listed after the homepage sections.
+const PAGES = [{ path: "/resume", label: "Resume" }] as const;
 
 const iconButton =
     "inline-flex size-10 items-center justify-center rounded-full border border-ink/10 text-body transition hover:border-ink/25 hover:bg-ink/5 hover:text-ink";
@@ -23,7 +27,8 @@ function LinkedInMark() {
 }
 
 // Full-width sticky header: transparent at the top of the page, a border and shadow once scrolled.
-// The link for the section in view is marked; on phones the menu drops down over the page.
+// The link for the section in view (or the page you're on) is marked; on phones the menu drops down over the page.
+// Links are router links so the section links also work from other pages (HomePage does the scrolling).
 export default function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
@@ -31,6 +36,8 @@ export default function Header() {
     const headerRef = useRef<HTMLElement>(null);
     const buttonRef = useRef<HTMLButtonElement>(null);
     const close = () => setMenuOpen(false);
+    const { pathname } = useLocation();
+    const onHome = pathname === "/";
 
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > 8);
@@ -42,6 +49,7 @@ export default function Header() {
     // A section counts as "in view" when it crosses a band just below the header. Contact is the last section and
     // can't scroll that far up, so reaching the bottom of the page marks it.
     useEffect(() => {
+        if (!onHome) return;
         const visible = new Set<string>();
         const update = () => {
             const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
@@ -67,7 +75,7 @@ export default function Header() {
             observer.disconnect();
             window.removeEventListener("scroll", update);
         };
-    }, []);
+    }, [onHome]);
 
     // While the phone menu is open: Escape closes it and hands focus back to the button; a tap elsewhere closes it.
     useEffect(() => {
@@ -89,6 +97,8 @@ export default function Header() {
     }, [menuOpen]);
 
     const raised = scrolled || menuOpen;
+    // Sections only exist on the homepage, so nothing is marked as "in view" elsewhere.
+    const activeSection = onHome ? active : null;
 
     return (
         <header
@@ -98,7 +108,7 @@ export default function Header() {
             }`}
         >
             <nav aria-label="Main" className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-4 px-5 md:px-8">
-                <a href="#top" aria-label="Justin Whitfield, back to top" className="group flex items-center gap-3 rounded-lg">
+                <Link to="/" data-brand aria-label="Justin Whitfield, home" className="group flex items-center gap-3 rounded-lg">
                     <span
                         aria-hidden="true"
                         className="flex size-9 items-center justify-center rounded-lg bg-accent font-mono text-sm font-bold text-white shadow-sm shadow-accent/30 transition group-hover:brightness-110"
@@ -109,26 +119,29 @@ export default function Header() {
                         <span className="text-base font-semibold tracking-tight text-ink">Justin Whitfield</span>
                         <span className="font-mono text-[11px] text-muted">Software developer</span>
                     </span>
-                </a>
+                </Link>
 
                 <div className="hidden items-center gap-1 md:flex">
-                    {SECTIONS.map(({ id, label }) => (
-                        <a
-                            key={id}
-                            href={`#${id}`}
-                            aria-current={active === id ? "location" : undefined}
+                    {[
+                        ...SECTIONS.map(({ id, label }) => ({ key: id, to: `/#${id}`, label, current: activeSection === id, kind: "location" as const })),
+                        ...PAGES.map(({ path, label }) => ({ key: path, to: path, label, current: pathname === path, kind: "page" as const })),
+                    ].map(({ key, to, label, current, kind }) => (
+                        <Link
+                            key={key}
+                            to={to}
+                            aria-current={current ? kind : undefined}
                             className={`relative rounded-full px-3.5 py-2 text-sm font-medium transition hover:text-ink ${
-                                active === id ? "text-ink" : "text-body"
+                                current ? "text-ink" : "text-body"
                             }`}
                         >
                             {label}
                             <span
                                 aria-hidden="true"
                                 className={`absolute inset-x-3.5 -bottom-0.5 h-0.5 rounded-full bg-accent transition-opacity ${
-                                    active === id ? "opacity-100" : "opacity-0"
+                                    current ? "opacity-100" : "opacity-0"
                                 }`}
                             />
-                        </a>
+                        </Link>
                     ))}
                 </div>
 
@@ -139,9 +152,9 @@ export default function Header() {
                     <a href={LINKEDIN_URL} {...external} aria-label="LinkedIn profile" className={iconButton}>
                         <LinkedInMark />
                     </a>
-                    <a href="#contact" className={`${primaryButton} ml-1 min-h-9 px-4 py-1.5 shadow-md`}>
+                    <Link to="/#contact" className={`${primaryButton} ml-1 min-h-9 px-4 py-1.5 shadow-md`}>
                         Get in touch
-                    </a>
+                    </Link>
                 </div>
 
                 <button
@@ -163,19 +176,22 @@ export default function Header() {
                 className={`${menuOpen ? "block" : "hidden"} absolute inset-x-0 top-full border-b border-ink/10 bg-page shadow-lg shadow-ink/10 md:hidden`}
             >
                 <div className="mx-auto flex max-w-6xl flex-col gap-1 px-5 py-3">
-                    {SECTIONS.map(({ id, label }) => (
-                        <a
-                            key={id}
-                            href={`#${id}`}
+                    {[
+                        ...SECTIONS.map(({ id, label }) => ({ key: id, to: `/#${id}`, label, current: activeSection === id, kind: "location" as const })),
+                        ...PAGES.map(({ path, label }) => ({ key: path, to: path, label, current: pathname === path, kind: "page" as const })),
+                    ].map(({ key, to, label, current, kind }) => (
+                        <Link
+                            key={key}
+                            to={to}
                             onClick={close}
-                            aria-current={active === id ? "location" : undefined}
+                            aria-current={current ? kind : undefined}
                             className={`flex items-center justify-between rounded-xl px-4 py-3 text-base font-medium transition hover:bg-ink/5 ${
-                                active === id ? "bg-ink/5 text-ink" : "text-body"
+                                current ? "bg-ink/5 text-ink" : "text-body"
                             }`}
                         >
                             {label}
-                            {active === id && <span aria-hidden="true" className="size-1.5 rounded-full bg-accent" />}
-                        </a>
+                            {current && <span aria-hidden="true" className="size-1.5 rounded-full bg-accent" />}
+                        </Link>
                     ))}
                     <div className="mt-2 flex items-center gap-2 border-t border-ink/10 px-1 pt-4 pb-1">
                         <a href={GITHUB_URL} {...external} onClick={close} aria-label="GitHub profile" className={iconButton}>
@@ -184,9 +200,9 @@ export default function Header() {
                         <a href={LINKEDIN_URL} {...external} onClick={close} aria-label="LinkedIn profile" className={iconButton}>
                             <LinkedInMark />
                         </a>
-                        <a href="#contact" onClick={close} className={`${primaryButton} ml-auto`}>
+                        <Link to="/#contact" onClick={close} className={`${primaryButton} ml-auto`}>
                             Get in touch
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>

@@ -16,7 +16,7 @@ export default function BackToTop() {
 
     function toTop() {
         window.scrollTo({ top: 0 });
-        document.querySelector<HTMLElement>('header a[href="#top"]')?.focus({ preventScroll: true });
+        document.querySelector<HTMLElement>("header [data-brand]")?.focus({ preventScroll: true });
     }
 
     return (

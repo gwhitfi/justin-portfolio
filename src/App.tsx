@@ -1,14 +1,14 @@
-import AboutSection from "./components/sections/AboutSection";
+import { Outlet, Route, Routes } from "react-router-dom";
 import Header from "./components/sections/Header";
-import ProjectSection from "./components/sections/ProjectSection";
-import WelcomeSection from "./components/sections/WelcomeSection";
-import "./index.css";
-import ContactSection from "./components/sections/ContactSection";
 import Footer from "./components/sections/Footer";
 import BackToTop from "./components/BackToTop";
+import HomePage from "./pages/HomePage";
+import ResumePage from "./pages/ResumePage";
 import { primaryButton } from "./components/projects/styles";
+import "./index.css";
 
-function App() {
+// Shared frame for every page: skip link, header, page content, footer and the back-to-top button.
+function Layout() {
     return (
         <div id="top" className="font-sans text-body antialiased">
             {/* First stop for keyboard users; hidden until it has focus. */}
@@ -18,15 +18,24 @@ function App() {
             <Header />
             <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-5 pt-4 pb-16 md:px-8">
                 <main id="main" className="flex scroll-mt-20 flex-col gap-12">
-                    <WelcomeSection />
-                    <ProjectSection />
-                    <AboutSection />
-                    <ContactSection />
+                    <Outlet />
                 </main>
                 <Footer />
             </div>
             <BackToTop />
         </div>
+    );
+}
+
+function App() {
+    return (
+        <Routes>
+            <Route element={<Layout />}>
+                <Route index element={<HomePage />} />
+                <Route path="resume" element={<ResumePage />} />
+                <Route path="*" element={<HomePage />} />
+            </Route>
+        </Routes>
     );
 }
 

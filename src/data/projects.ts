@@ -86,7 +86,7 @@ export const projects: Project[] = [
     {
         title: "Work Order Fox",
         description:
-            "Work-order software for landlords and property managers. Build a work order room by room, send the contractor a no-login link to check off the work from their phone, and track progress as it gets done.",
+            "Work order software for landlords and property managers. Build a work order room by room, send the contractor a link to check off the work from their phone with no app required, and track progress as it gets done.",
         status: "In daily use in our property management business since October 2026.",
         highlights: [
             "Multi-tenant: every query is scoped to the user's organization, with Zod validation at every server boundary.",
@@ -113,9 +113,9 @@ export const projects: Project[] = [
     {
         title: "Job Scraper",
         description:
-            "A personal job tracker that crawls company career pages, filters openings by location, and uses Claude Sonnet 5.5 to rate fit and estimate pay. A local dashboard lets me search, star, hide, and track applications.",
+            "A personal job tracker that crawls company career pages, filters openings by location, and uses Claude Sonnet 5.5 to review fit and estimate pay. A locally hosted dashboard lets me search, star, hide, and track applications.",
         hardPart:
-            "18 platform adapters (Workday, SuccessFactors, Oracle HCM, BambooHR, and more) plus a generic engine that infers HTML, JSON, or Schema.org JobPosting recipes, so most new sites need no code. It respects robots.txt and flags duplicate postings across job boards.",
+            "18 custom platform adapters for job listing hosts like Workday, SuccessFactors, Oracle HCM, BambooHR, and more. The crawler respects robots.txt and flags duplicate postings across job boards.",
         tier: "highlight",
         screenshot: JobScraper,
         githubLink: "https://github.com/gwhitfi/job-scraper",
@@ -127,7 +127,7 @@ export const projects: Project[] = [
         description:
             "A tiling window manager for Windows 11 in the style of Linux tiling managers. Windows snap into fixed layouts, and focus, moves, workspaces, and an app launcher are all driven from the keyboard.",
         hardPart:
-            "Built on Win32 hooks: a low-level keyboard hook for Win-key hotkeys and WinEvent hooks to follow windows. Every window it hides is written to disk first, so a crash never loses one, and layouts respect each app's minimum size.",
+            "It listens for your keyboard shortcuts and for windows opening and closing across all of Windows, so tiling happens instantly. Before hiding a window it saves a note of it, so even a crash never loses one, and it never squeezes an app smaller than it can handle.",
         tier: "highlight",
         screenshot: WinTrellis,
         githubLink: "https://github.com/gwhitfi/wintrellis",
@@ -139,7 +139,7 @@ export const projects: Project[] = [
         description:
             "A college football management sim inspired by Sports Interactive's Football Manager. Simulate games or play them out, making the play-calling and coaching decisions yourself.",
         hardPart:
-            "A C++ engine simulates each play with player movement, ball flight, and catch resolution, driven by JSON playbooks, formations, and rosters, and is tuned against real-world stat targets. A small server sends the play tracking data to a TypeScript viewer in the browser.",
+            "A custom C++ engine plays out every snap. Results are tuned to match realistic football games, and you can watch each play unfold in the browser.",
         tier: "highlight",
         screenshot: CFBSim,
         githubLink: "https://github.com/gwhitfi/cfb-sim",
@@ -149,7 +149,7 @@ export const projects: Project[] = [
     {
         title: "File Sorter",
         description:
-            "A keyboard-driven Windows app for cleaning up a messy folder one file at a time. Preview each file, then send it to one of five destinations with a single keypress, delete it, or skip it.",
+            "A simple Windows tool for cleaning up a messy folder one file at a time. Preview each file, then send it to one of five destinations with a single keypress or mouse click, delete it, or skip it.",
         hardPart:
             "Moves never overwrite (a clash becomes name (2).ext), moves across drives copy in the background and delete the original only after the copy succeeds, and Ctrl+Z undoes the last move.",
         tier: "highlight",
