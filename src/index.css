@@ -1,17 +1,62 @@
-@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap");
 @import "tailwindcss";
 
 @theme {
-    --font-sans: "JetBrains Mono", ui-monospace, monospace;
-    --color-accent: #3fb950;
+    --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, monospace;
+    /* Warm Paper: a light page, white cards, warm ink and one blue accent. */
+    --color-page: #f6f3ee;
+    --color-surface: #ffffff;
+    --color-ink: #1a1917;
+    --color-body: #44403a;
+    --color-muted: #645e55;
+    --color-accent: #1d4ed8;
+    --animate-fade-in: fade-in 150ms ease-out;
+
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+        }
+    }
+}
+
+html {
+    /* Light scrollbars and form controls to match the page. */
+    color-scheme: light;
 }
 
 body {
-    @apply bg-zinc-950 bg-[radial-gradient(ellipse_at_top,color-mix(in_oklab,var(--color-green-950)_40%,transparent),transparent_45%)] bg-fixed;
+    @apply bg-page;
 }
 
+/* Headings and prose are sans; the mono face is kept for small labels, chips and metadata. */
 @layer base {
-    h1, h2 {
-        @apply font-bold tracking-tight text-white;
+    h1, h2, h3, h4 {
+        @apply font-sans font-semibold tracking-tight text-balance text-ink;
+    }
+
+    p, li, dd {
+        @apply text-pretty;
+    }
+
+    /* One keyboard focus ring for every link and button. */
+    :focus-visible {
+        @apply outline-2 outline-offset-2 outline-accent;
+    }
+
+    ::selection {
+        @apply bg-accent/30 text-ink;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
     }
 }

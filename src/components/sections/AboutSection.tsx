@@ -1,24 +1,36 @@
+const SKILLS = [
+    ["Languages", "TypeScript, JavaScript, Python, C++, Rust, SQL, Java, C#"],
+    ["Frontend", "React, Next.js, Tailwind CSS"],
+    ["Backend & data", "Node.js, PostgreSQL, Prisma, REST APIs, OAuth 2.0 / PKCE"],
+    ["Tools", "Git, GitHub Actions, Vitest, Linux, Vercel, Claude Code, Codex"],
+] as const;
+
 export default function AboutSection() {
     return (
-        <div id="about" className="flex scroll-mt-28 flex-col items-center gap-6 border-t border-white/10 pt-12">
-            <h2 className="text-lg md:text-xl">About</h2>
-            <div className="flex max-w-3xl flex-col gap-3 text-sm text-zinc-400 leading-relaxed">
+        <section id="about" className="flex scroll-mt-20 flex-col items-center gap-8 border-t border-ink/10 pt-12">
+            <h2 className="text-2xl md:text-3xl">About</h2>
+            <div className="flex max-w-2xl flex-col gap-4 leading-relaxed text-body">
                 <p>
-                    I'm a software developer with a Bachelor of Science in Computer Science, completed in March 2026. I enjoy
-                    coming up with unique ideas and turning a vision into reality with an application or software that can
-                    have practical real world use.
+                    I finished a Bachelor of Science in Computer Science at Western Governors University in March 2026.
+                    Before that I spent nearly 15 years in business: after earning a BA in History from Clemson
+                    University in 2012, I worked in real estate (property management, sales, flipping, development, and
+                    investing) and managed the warehouse and shipping for an online retailer moving hundreds of products
+                    every day.
                 </p>
                 <p>
-                    I also have nearly 15 years of professional business experience. After earning a BA in History from
-                    Clemson University in 2012, I worked in real estate. This includes property management, sales, flipping,
-                    development, and investing. I've also managed the warehouse and shipment for an online retail business
-                    moving hundreds of products every day.
-                </p>
-                <p>
-                    This background has given me experience in solving unique problems and communicating with many different
-                    people and across different industries.
+                    That background shapes what I build. Work Order Fox comes straight out of my years in property
+                    management, and it's taught me to solve problems for real users and to communicate with people across
+                    different industries.
                 </p>
             </div>
-        </div>
+            <dl className="grid w-full max-w-2xl gap-x-6 gap-y-3 rounded-2xl border border-ink/10 bg-surface/60 p-5 text-sm sm:grid-cols-[auto_1fr] sm:gap-y-2.5">
+                {SKILLS.map(([group, items]) => (
+                    <div key={group} className="flex flex-col gap-1 sm:contents">
+                        <dt className="font-mono text-xs font-medium text-accent sm:pt-0.5">{group}</dt>
+                        <dd className="text-body">{items}</dd>
+                    </div>
+                ))}
+            </dl>
+        </section>
     );
 }

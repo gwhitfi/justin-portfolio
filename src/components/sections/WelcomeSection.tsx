@@ -1,23 +1,45 @@
-import justin from "../../assets/justin.jpeg";
+import justin from "../../assets/justin.webp";
+import LocationLine from "../LocationLine";
+import { external, primaryButton, secondaryButton } from "../projects/styles";
+import { DEMO_URL } from "../../data/profile";
 
 export default function WelcomeSection() {
     return (
-        <section className="flex flex-col items-center gap-6 pt-6 text-center md:flex-row md:pt-8 md:text-left">
+        <section className="flex flex-col items-center gap-6 pt-6 md:flex-row md:items-start md:gap-8 md:pt-8">
             <img
                 src={justin}
-                className="w-24 shrink-0 rounded-full ring-2 ring-accent/60 ring-offset-4 ring-offset-zinc-950 md:w-32"
-                alt=""
+                width={320}
+                height={352}
+                className="size-24 shrink-0 rounded-full object-cover object-top ring-2 ring-accent/60 ring-offset-4 ring-offset-page md:size-28 lg:size-36"
+                alt="Justin Whitfield"
             />
-            <div className="flex flex-col gap-3">
-                <h2 className="text-xl md:text-3xl">Hey, I'm Justin!</h2>
-                <div className="flex flex-col gap-3 text-sm text-zinc-400 leading-relaxed">
-                    <p>
-                        I'm a <span className="">software developer</span> who also has a diverse
-                        professional background in real estate and online retail. I love to create
-                        and learn new things, and I'm excited to see what new projects I can work on
-                        next.
+            <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-2 text-center md:text-left">
+                    <h1 className="text-2xl min-[360px]:text-3xl md:text-4xl">Hey, I'm Justin!</h1>
+                    {/* Two lines on phones, one line with a dot between them from sm up. */}
+                    <p className="flex flex-col font-mono text-sm text-accent sm:block">
+                        <span>Software developer</span>
+                        <span aria-hidden="true" className="max-sm:hidden">
+                            {" · "}
+                        </span>
+                        <span>B.S. Computer Science, WGU 2026</span>
                     </p>
-                    <p>Check out some of my current and previous projects!</p>
+                    <LocationLine className="items-center sm:justify-center md:justify-start" />
+                </div>
+                <p className="max-w-2xl leading-relaxed text-body">
+                    I built and run Work Order Fox, a multi-tenant SaaS that my property management business uses every
+                    day. Before software, I spent nearly 15 years in real estate and online retail. I use AI tools like
+                    Claude Code and Codex every day to learn and ship faster, and I review and understand everything I
+                    ship. I especially enjoy building MCP servers and agentic features, like the one that lets Claude
+                    Code draft work orders in Work Order Fox. I'm looking for a junior software engineering role.
+                </p>
+                <div className="flex flex-wrap justify-center gap-2 md:justify-start">
+                    <a href={DEMO_URL} {...external} className={primaryButton}>
+                        Try the live demo
+                    </a>
+                    <a href="#projects" className={secondaryButton}>
+                        See my projects
+                    </a>
                 </div>
             </div>
         </section>

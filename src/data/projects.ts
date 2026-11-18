@@ -1,111 +1,196 @@
-import SetlistPlaylist from "../assets/SpotifyPlaylist/SpotifyPlaylistMobileFriendly2.png";
-import WeatherSimple from "../assets/WeatherSimple.png";
-import Chess from "../assets/Chess.png";
-import JobScraper from "../assets/JobScraper.png";
-import FileSorter from "../assets/FileSorter.png";
-import WorkOrder from "../assets/WorkOrder.png";
-import WinTrellis from "../assets/WinTrellis.png";
-import CFBSim from "../assets/CFBSim.png";
+import type { ComponentType } from "react";
+import {
+    SiCplusplus,
+    SiCss,
+    SiHtml5,
+    SiJavascript,
+    SiNextdotjs,
+    SiPostgresql,
+    SiPrisma,
+    SiPython,
+    SiReact,
+    SiRust,
+    SiTailwindcss,
+    SiTypescript,
+    SiVite,
+} from "@icons-pack/react-simple-icons";
+import { Grid2x2 } from "lucide-react";
+import JobScraper from "../assets/JobScraper.webp";
+import FileSorter from "../assets/FileSorter.webp";
+import WinTrellis from "../assets/WinTrellis.webp";
+import CFBSim from "../assets/CFBSim.webp";
+import SetlistPlaylist from "../assets/SetlistPlaylist.webp";
+import WeatherSimple from "../assets/WeatherSimple.webp";
+import Chess from "../assets/Chess.webp";
+import WorkOrderFoxHome from "../assets/WorkOrderFox/WorkOrderFoxHome.webp";
+import WorkOrderFoxWorkOrder from "../assets/WorkOrderFox/WorkOrderFoxWorkOrder.webp";
+import WorkOrderFoxList from "../assets/WorkOrderFox/WorkOrderFoxList.webp";
+import WorkOrderFoxFoxBot from "../assets/WorkOrderFox/WorkOrderFoxFoxBot.webp";
+import WorkOrderFoxMcp from "../assets/WorkOrderFox/WorkOrderFoxMcp.webp";
+
+// featured: the large card · highlight: image cards · earlier: the smaller "Earlier projects" row.
+export type ProjectTier = "featured" | "highlight" | "earlier";
+
+export interface Screenshot {
+    src: string;
+    caption: string;
+}
+
+export interface Tech {
+    Icon: ComponentType<{ className?: string; size?: number | string; "aria-hidden"?: boolean }>;
+    label: string;
+}
 
 export interface Project {
     title: string;
     description: string;
-    screenshot: string;
-    githubLink: string;
+    tier: ProjectTier;
+    screenshot?: string;
+    // Which part of a tall screenshot to keep when it's cropped into a thumbnail.
+    screenshotPosition?: "top" | "center";
+    gallery?: Screenshot[];
+    githubLink?: string;
     hostedLink?: string;
-    techIcons: string[];
-    apisUsed: string[];
+    // A no-signup demo, shown as the main button when present.
+    demoLink?: string;
+    // One line on how the project is used today, shown on the featured card.
+    status?: string;
+    // Short engineering bullets shown on the featured card.
+    highlights?: string[];
+    // Public CI runs backing the test claims.
+    ciLink?: string;
+    // One standout technical detail, in one or two sentences.
+    hardPart?: string;
+    tech: Tech[];
+    services: string[];
 }
+
+const TECH = {
+    typescript: { Icon: SiTypescript, label: "TypeScript" },
+    javascript: { Icon: SiJavascript, label: "JavaScript" },
+    react: { Icon: SiReact, label: "React" },
+    nextjs: { Icon: SiNextdotjs, label: "Next.js" },
+    vite: { Icon: SiVite, label: "Vite" },
+    tailwind: { Icon: SiTailwindcss, label: "Tailwind CSS" },
+    postgresql: { Icon: SiPostgresql, label: "PostgreSQL" },
+    prisma: { Icon: SiPrisma, label: "Prisma" },
+    python: { Icon: SiPython, label: "Python" },
+    rust: { Icon: SiRust, label: "Rust" },
+    cplusplus: { Icon: SiCplusplus, label: "C++" },
+    windows: { Icon: Grid2x2, label: "Windows" },
+    html: { Icon: SiHtml5, label: "HTML" },
+    css: { Icon: SiCss, label: "CSS" },
+} satisfies Record<string, Tech>;
 
 export const projects: Project[] = [
     {
-        title: "Work Order Generator",
+        title: "Work Order Fox",
         description:
-            "Built a multi-tenant SaaS platform that lets property managers generate, assign, and track contractor work orders. Designed a normalized PostgreSQL schema where every query is scoped to the user’s organization, keeping each company’s data separate",
-        screenshot: WorkOrder,
-        githubLink: "https://www.workorder.dev",
-        hostedLink: "https://www.workorder.dev",
-        techIcons: [
-            "devicon-typescript-plain colored",
-            "devicon-react-original colored",
-            "devicon-vitejs-plain colored",
-            "devicon-tailwindcss-original colored",
+            "Work-order software for landlords and property managers. Build a work order room by room, send the contractor a no-login link to check off the work from their phone, and track progress as it gets done.",
+        status: "In daily use in our property management business since October 2026.",
+        highlights: [
+            "Multi-tenant: every query is scoped to the user's organization, with Zod validation at every server boundary.",
+            "Fox Bot: Claude Haiku 5.5 turns a plain-English description into a draft work order for review.",
+            "Remote MCP server: organization-scoped API keys let AI assistants like Claude Code search, create, and update work orders.",
+            "88 Vitest test files, with type checks, lint, tests, and a production build in GitHub Actions CI.",
         ],
-        apisUsed: [],
+        ciLink: "https://github.com/gwhitfi/workorderfox/actions/workflows/ci.yml",
+        tier: "featured",
+        screenshot: WorkOrderFoxWorkOrder,
+        gallery: [
+            { src: WorkOrderFoxWorkOrder, caption: "A work order: areas, line items, and priorities" },
+            { src: WorkOrderFoxList, caption: "Work orders grouped by status, with overdue dates flagged" },
+            { src: WorkOrderFoxFoxBot, caption: "Fox Bot: describe the job and get a draft work order" },
+            { src: WorkOrderFoxMcp, caption: "MCP: Claude Code drafts a work order through the API" },
+            { src: WorkOrderFoxHome, caption: "Landing page" },
+        ],
+        githubLink: "https://github.com/gwhitfi/workorderfox",
+        hostedLink: "https://www.workorderfox.com",
+        demoLink: "https://www.workorderfox.com/demo",
+        tech: [TECH.typescript, TECH.nextjs, TECH.react, TECH.tailwind, TECH.postgresql, TECH.prisma],
+        services: ["Claude API", "Clerk", "Resend", "Vercel Blob"],
     },
     {
         title: "Job Scraper",
         description:
-            "A personal job tracker that checks company career pages, filters openings by location and fit, and uses AI to rate matches and estimate pay. It brings everything into one dashboard where you can search, star, hide, and track applications. Useful for smaller markets with less exposure to job boards.",
+            "A personal job tracker that crawls company career pages, filters openings by location, and uses Claude Sonnet 5.5 to rate fit and estimate pay. A local dashboard lets me search, star, hide, and track applications.",
+        hardPart:
+            "18 platform adapters (Workday, SuccessFactors, Oracle HCM, BambooHR, and more) plus a generic engine that infers HTML, JSON, or Schema.org JobPosting recipes, so most new sites need no code. It respects robots.txt and flags duplicate postings across job boards.",
+        tier: "highlight",
         screenshot: JobScraper,
         githubLink: "https://github.com/gwhitfi/job-scraper",
-        techIcons: ["devicon-python-plain colored"],
-        apisUsed: ["Claude Sonnet 5.5"],
+        tech: [TECH.python],
+        services: ["Claude API"],
     },
     {
         title: "WinTrellis",
         description:
-            "A custom Windows tiling window manager, in the style of popular Linux managers. Automatically snaps windows into predetermined grids, and move windows and focus with hotkeys. Custom workspace views, and laucnher for favorite apps.",
+            "A tiling window manager for Windows 11 in the style of Linux tiling managers. Windows snap into fixed layouts, and focus, moves, workspaces, and an app launcher are all driven from the keyboard.",
+        hardPart:
+            "Built on Win32 hooks: a low-level keyboard hook for Win-key hotkeys and WinEvent hooks to follow windows. Every window it hides is written to disk first, so a crash never loses one, and layouts respect each app's minimum size.",
+        tier: "highlight",
         screenshot: WinTrellis,
         githubLink: "https://github.com/gwhitfi/wintrellis",
-        techIcons: ["devicon-rust-plain", "devicon-windows11-original"],
-        apisUsed: ["Win32"],
+        tech: [TECH.rust, TECH.windows],
+        services: ["Win32"],
     },
     {
         title: "CFB Manager",
         description:
-            "College Football management simulator, inspired by the popular 'Football Manager' series by Sports Interactive. Custom C++ game engine, allows user to simulate games or play them out manually making playcalling and coaching decisions. View the game real time in browser.",
+            "A college football management sim inspired by Sports Interactive's Football Manager. Simulate games or play them out, making the play-calling and coaching decisions yourself.",
+        hardPart:
+            "A C++ engine simulates each play with player movement, ball flight, and catch resolution, driven by JSON playbooks, formations, and rosters, and is tuned against real-world stat targets. A small server sends the play tracking data to a TypeScript viewer in the browser.",
+        tier: "highlight",
         screenshot: CFBSim,
         githubLink: "https://github.com/gwhitfi/cfb-sim",
-        techIcons: ["devicon-cplusplus-plain colored", "devicon-typescript-plain colored", "devicon-css3-plain colored"],
-        apisUsed: [],
+        tech: [TECH.cplusplus, TECH.typescript, TECH.css],
+        services: [],
     },
     {
         title: "File Sorter",
-        description: "Clean folders by easily sorting into pre-determined destinations.",
+        description:
+            "A keyboard-driven Windows app for cleaning up a messy folder one file at a time. Preview each file, then send it to one of five destinations with a single keypress, delete it, or skip it.",
+        hardPart:
+            "Moves never overwrite (a clash becomes name (2).ext), moves across drives copy in the background and delete the original only after the copy succeeds, and Ctrl+Z undoes the last move.",
+        tier: "highlight",
         screenshot: FileSorter,
         githubLink: "https://github.com/gwhitfi/file-sorter",
-        techIcons: ["devicon-cplusplus-plain colored", "devicon-windows11-original"],
-        apisUsed: ["Win32"],
+        tech: [TECH.cplusplus, TECH.windows],
+        services: ["Win32"],
     },
     {
-        title: "Setlist -> Playlist",
-        description:
-            "Search for your favorite musical artist and get a custom Spotify playlist created based on their recently played live setlists. Data provided by the Setlist.fm, MusicBrainz, Last.fm APIs, and artwork provided by the Fanart.tv API.",
+        title: "Setlist → Playlist",
+        description: "Turns an artist's recent live setlists into a Spotify playlist, using five music APIs.",
+        hardPart: "Spotify OAuth 2.0 sign-in with PKCE and automatic token refresh, plus debounced artist search.",
+        tier: "earlier",
         screenshot: SetlistPlaylist,
-        githubLink: "https://github.com/gwhitfi/setlist-playlist",
-        hostedLink: "",
-        techIcons: [
-            "devicon-typescript-plain colored",
-            "devicon-react-original colored",
-            "devicon-vitejs-plain colored",
-            "devicon-tailwindcss-original colored",
-        ],
-        apisUsed: ["Spotify", "Last.fm", "Setlist.fm", "MusicBrainz", "Fanart.TV"],
+        githubLink: "https://github.com/gwhitfi/SpotifyPlaylist",
+        tech: [TECH.typescript, TECH.react, TECH.vite, TECH.tailwind],
+        services: ["Spotify", "Setlist.fm", "Last.fm", "MusicBrainz", "Fanart.tv"],
     },
     {
         title: "Simple Weather",
-        description:
-            "A simple weather app that focuses on providing key information without filler. Implements the Open-Meteo and Google Geocoding APIs.",
+        description: "A weather app that shows the key information without filler.",
+        hardPart:
+            "Debounced address search, times shown in the searched location's own time zone, and a default location saved in the browser.",
+        tier: "earlier",
         screenshot: WeatherSimple,
         githubLink: "https://github.com/gwhitfi/simple-weather",
         hostedLink: "https://weather-simplified.netlify.app/",
-        techIcons: [
-            "devicon-typescript-plain colored",
-            "devicon-react-original colored",
-            "devicon-vitejs-plain colored",
-            "devicon-tailwindcss-original colored",
-        ],
-        apisUsed: ["Open-Meteo", "Google Geocoding"],
+        tech: [TECH.typescript, TECH.react, TECH.vite, TECH.tailwind],
+        services: ["Open-Meteo", "Google Geocoding"],
     },
     {
         title: "Browser Chess",
-        description:
-            "Browser-based Chess game with a computer opponent that moves automatically. Handles all normal chess functionality and win conditions.",
+        description: "Chess in the browser, for one or two players, against a simple computer opponent.",
+        hardPart:
+            "Every move is validated against check: you can't move into check, and the computer finds a legal escape when it's in check. Vanilla JavaScript, no libraries.",
+        tier: "earlier",
         screenshot: Chess,
+        screenshotPosition: "center",
         githubLink: "https://github.com/gwhitfi/chess",
         hostedLink: "https://jwchess.netlify.app/",
-        techIcons: ["devicon-javascript-plain colored", "devicon-html5-plain colored", "devicon-css3-plain colored"],
-        apisUsed: [],
+        tech: [TECH.javascript, TECH.html, TECH.css],
+        services: [],
     },
 ];
