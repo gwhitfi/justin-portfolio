@@ -34,22 +34,29 @@ export default function WelcomeSection() {
                     </p>
                     <LocationLine className="items-center sm:justify-center md:justify-start" />
                 </div>
-                <p className="max-w-2xl leading-relaxed text-body">
-                    I built and run{" "}
-                    <a
-                        href={WORK_ORDER_FOX_URL}
-                        {...external}
-                        className="font-medium text-accent underline decoration-accent/40 underline-offset-4 transition hover:decoration-accent"
-                    >
-                        Work Order Fox
-                    </a>
-                    , a multi-tenant SaaS that my property management business uses
-                    daily. I've spent nearly 15 years in real estate and online retail before software, so I have
-                    business administration experience as well. I use AI tools like Claude Code and Codex every day to
-                    learn and ship faster, and I review and understand everything I ship. I especially enjoy building MCP
-                    servers and agentic features, like the one that lets Claude Code draft work orders in Work Order Fox.
-                    I'm looking for a junior software engineering role.
-                </p>
+                <div className="flex max-w-2xl flex-col gap-3 leading-relaxed text-body">
+                    <p>
+                        I built and run{" "}
+                        <a
+                            href={WORK_ORDER_FOX_URL}
+                            {...external}
+                            className="font-medium text-accent underline decoration-accent/40 underline-offset-4 transition hover:decoration-accent"
+                        >
+                            Work Order Fox
+                        </a>
+                        , a multi-tenant SaaS that my property management business uses daily. I've spent nearly 15
+                        years in real estate and online retail before software, so I have business administration
+                        experience as well. I have experience with bookkeeping, accounting, managing inventory, and
+                        coordinating logistics with shipping partners like USPS, UPS, and FedEx.
+                    </p>
+                    <p>
+                        In software, I have been coding for years and have a solid understanding of software
+                        engineering fundamentals. I've since expanded my skills and use AI tools like Claude Code and
+                        Codex every day to learn and ship faster. I review and understand everything I ship. I
+                        especially enjoy building MCP servers and agentic features, like the one that lets Claude Code
+                        draft work orders in Work Order Fox. I'm looking for a junior software engineering role.
+                    </p>
+                </div>
                 <div className="flex flex-wrap justify-center gap-2 md:justify-start">
                     <a href={DEMO_URL} {...external} className={primaryButton}>
                         Try the live demo

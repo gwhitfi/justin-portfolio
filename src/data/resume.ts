@@ -60,13 +60,13 @@ export const resume: Resume = {
         ],
     },
     summary:
-        "Computer Science graduate (WGU, 2026) who builds web applications with TypeScript, React, Python, and PostgreSQL. I built Work Order Fox, a multi-tenant work order platform we use every day in our property management business, and a Python web crawler that looks for open job postings. I bring nearly 15 years of operations experience managing contractors, rental properties, tenants, and logistics. I am comfortable building with Claude Code and Codex. Looking for a junior developer role where I can learn from senior engineers.",
+        "Software developer with a B.S. in Computer Science (WGU, 2026). I built and run Work Order Fox, a multi-tenant SaaS that my property management business uses daily. I bring nearly 15 years in real estate and online retail, with experience in bookkeeping, accounting, inventory management, and coordinating shipping with USPS, UPS, and FedEx. I have a solid understanding of software engineering fundamentals and use Claude Code and Codex every day to learn and ship faster, and I review and understand everything I ship. I especially enjoy building MCP servers and agentic features. Looking for a junior software engineering role.",
     skills: [
         { label: "Languages", items: "Python, TypeScript, JavaScript, SQL, C++, Rust, HTML, CSS, Java, C#" },
         { label: "Frontend", items: "React, Next.js, Tailwind CSS, Bootstrap" },
         {
             label: "Backend & Data",
-            items: "PostgreSQL, MySQL, Prisma, REST APIs, Node.js, OAuth 2.0/PKCE, scheduled jobs and web crawling",
+            items: "PostgreSQL, MySQL, Prisma, REST APIs, Node.js, OAuth 2.0/PKCE, scheduled jobs, and web crawling",
         },
         {
             label: "AI & Dev Tools",
@@ -88,7 +88,7 @@ export const resume: Resume = {
             bullets: [
                 "Built a multi-tenant SaaS platform that lets property managers create, assign, and track contractor work orders. We use it every day in our property management business.",
                 "Designed a normalized PostgreSQL schema and scoped every query to the user's organization, with Zod validation at every server boundary.",
-                "Built Fox Bot, which uses Claude to draft a work order from a plain-English description, and a remote MCP server so AI assistants like Claude Code can search, create, and update work orders.",
+                "Built a remote MCP server with organization-scoped API keys so AI assistants like Claude Code can search, create, and update work orders, plus Fox Bot, which uses Claude to draft a work order from a plain-English description.",
             ],
             details: [
                 "Contractors get a link to check off line items from their phone, with no account or app required.",
